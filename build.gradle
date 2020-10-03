@@ -18,6 +18,12 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://jitpack.io'
+            credentials {
+                username = "jp_ke326kl2g2q4sh56aejnn49kft" //Expires Sun, 18 Oct 2020
+            }
+        }
     }
 }
 
