@@ -20,12 +20,15 @@ class InstalledPackageManager(context: Context) : BroadcastReceiver() {
 
         contextReference.get()?.packageManager?.let { pManager ->
 
-            val allApps = contextReference.get()?.packageManager?.queryIntentActivities(intent, 0)
+            val allApps = pManager.queryIntentActivities(intent, 0)
             allApps?.map { info ->
                 val app = AppInfo()
                 app.label = info.loadLabel(pManager).toString()
                 app.packageName = info.activityInfo.packageName
                 app.icon = info.activityInfo.loadIcon(pManager)
+                val packageInfo = pManager.getPackageInfo(info.activityInfo.packageName, 0)
+                app.version = packageInfo.versionName
+                app.versionCode = packageInfo.versionCode.toString()
                 appsList.add(app)
             }
         }
