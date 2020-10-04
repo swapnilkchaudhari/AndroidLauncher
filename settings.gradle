@@ -1,3 +1,4 @@
+include ':aidlLibrary'
 include ':installedPackage'
 include ':app'
 rootProject.name = "LauncherApp"
