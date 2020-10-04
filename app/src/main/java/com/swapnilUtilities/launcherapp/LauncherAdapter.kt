@@ -36,9 +36,11 @@ class LauncherAdapter(private val appsList: ArrayList<AppInfo>) :
 
 class LauncherVH(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-    private var textView: TextView = itemView.findViewById(R.id.text)
-
     private var img: ImageView = itemView.findViewById(R.id.img) as ImageView
+    private var tvAppName: TextView = itemView.findViewById(R.id.tvAppName)
+    private var tvPackageName: TextView = itemView.findViewById(R.id.tvPackageName)
+    private var tvVersionName: TextView = itemView.findViewById(R.id.tvVersionName)
+    private var tvVersionCode: TextView = itemView.findViewById(R.id.tvVersionCode)
 
     private lateinit var appInfo: AppInfo
 
@@ -46,7 +48,6 @@ class LauncherVH(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnCli
         val launchIntent =
             v.context.packageManager.getLaunchIntentForPackage(appInfo.packageName.toString())
         v.context.startActivity(launchIntent)
-        Toast.makeText(v.context, appInfo.label.toString(), Toast.LENGTH_LONG).show()
     }
 
     init {
@@ -55,7 +56,10 @@ class LauncherVH(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnCli
 
     fun bindView(info: AppInfo) {
         appInfo = info
-        textView.text = info.label
+        tvAppName.text = info.label
         img.setImageDrawable(info.icon)
+        tvPackageName.text = info.packageName
+        tvVersionName.text = info.version
+        tvVersionCode.text = info.versionCode
     }
 }
