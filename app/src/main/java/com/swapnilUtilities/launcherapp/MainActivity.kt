@@ -1,5 +1,6 @@
 package com.swapnilUtilities.launcherapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,15 @@ class MainActivity : AppCompatActivity(), PackageChangeListener {
         adapter = LauncherAdapter(viewModel.getInstalledApplicationList())
         rvAppList.adapter = adapter
         viewModel.registerPackageChangeListener(this)
+
+        btnSensorData.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    SensorDataActivity::class.java
+                )
+            )
+        }
     }
 
     override fun onBackPressed() {

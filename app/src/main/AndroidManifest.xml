@@ -17,6 +17,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SensorDataActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.swapnilutilities.aidllibrary.OrientationService" />
     </application>
 
 </manifest>
